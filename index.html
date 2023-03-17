@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="bg-black vh-100 position-relative" id="Home">
+      <div
+        class="loading-screen position-absolute top-0 bottom-0 start-0 end-0 d-flex justify-content-center align-items-center d-none"
+        id="loading-screen"
+      >
+        <i class="fa-solid fa-spinner fa-10x text-white fa-spin"></i>
+      </div>
+      <div class="navBarsDiv d-flex h-100 position-fixed ">
+        <div
+          class="h-100 bg-danger main-nav-bar px-3 py-4 d-flex flex-column justify-content-between"
+        >
+          <div id="nav-content" class="bg-success overflow-hidden">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#" id="searchBtn">Search</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#" id="categoriesBtn">Categories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#" id="areaBtn">Area</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#" id="ingredientsBtn">Ingredients</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#" id="contactUsId">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+          <div id="copyrights">
+            <i class="fa-brands fa-facebook text-white"></i>
+            <i class="fa-brands fa-twitter text-white"></i>
+            <i class="fa-solid fa-globe text-white"></i>
+            <p class="text-white">Copyright Â© 2019 All Rights Reserved.</p>
+          </div>
+        </div>
+        <div
+          class="nav-bar-part h-100 bg-white p-2 d-flex flex-column justify-content-between align-items-center"
+          id="navBar"
+        >
+          <img src="/Images/logo.png " class="img-fluid" alt="yummy face" />
+          <i class="fa-solid fa-bars fs-3" id="toggle-icon"></i>
+          <div class="d-flex flex-column">
+            <i class="fa-solid fa-globe"></i>
+            <i class="fa-solid fa-share-nodes mt-3"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Linking files-->
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/jquery-3.6.4.js" type="module"></script>
+    <script src="./js/search.js" type="module"></script>
+    <script src="./js/main.js" type="module"></script>
+  </body>
+</html>
