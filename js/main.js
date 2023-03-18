@@ -1,3 +1,7 @@
+import { search } from "./search.js";
+import { categories } from "./categories.js";
+import { hideAllWindows } from "./sharableFunctions.js";
+
 $(document).ready(function () {
   (function () {
     $(".navBarsDiv").animate({ left: "-200px" }, 0);
@@ -17,7 +21,7 @@ $(document).ready(function () {
     $(toggleIcon).toggleClass("fa-bars fa-x");
     let navBarsDiv = $(".navBarsDiv");
     if (navBarsDiv.css("left") == "0px") {
-      navBarsDiv.animate({ left: "-200px" }, 500);
+      hideNavBar();
     } else {
       navBarsDiv.animate({ left: "0px" }, 500);
     }
@@ -27,6 +31,13 @@ $(document).ready(function () {
       showNavIcons();
     }
   });
+
+  function hideNavBar() {
+    let toggleIcon = $("#toggle-icon");
+    $(toggleIcon).toggleClass("fa-bars fa-x");
+    let navBarsDiv = $(".navBarsDiv");
+    navBarsDiv.animate({ left: "-200px" }, 500);
+  }
 
   function showNavIcons() {
     function btnShowing(btn) {
@@ -93,4 +104,31 @@ $(document).ready(function () {
       }, 200);
     }, 400);
   }
+
+  let searchTab = new search();
+
+  $("#searchBtn").click(function () {
+    searchTab.clearWindow();
+    $("#searchByName").show();
+    $("#searchByFirstLetter").show();
+    hideNavBar();
+  });
+
+  $("#searchByName").keyup(function () {
+    let searchName = $("#searchByName").val();
+    searchTab.searchByName(searchName);
+  });
+  $("#searchByFirstLetter").keyup(function () {
+    let searchLetter = $("#searchByFirstLetter").val();
+    searchTab.searchByFirstLetter(searchLetter);
+  });
+
+  ///start of categories implementation ///////////////
+
+  $("#categoriesBtn").click(function () {
+    hideNavBar();
+    hideAllWindows();
+    $("#categories").show();
+    new categories(searchTab);
+  });
 });

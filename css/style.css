@@ -4,3 +4,36 @@
 .main-nav-bar {
   width: 200px;
 }
+
+.infoOverlayLayer {
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(102%);
+  -webkit-transform: translateY(102%);
+  -moz-transform: translateY(102%);
+  -ms-transform: translateY(102%);
+  -o-transform: translateY(102%);
+  transition: 0.5s ease-in-out;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -ms-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+}
+
+.singleInfoCard:hover .infoOverlayLayer {
+  transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  -o-transform: translateY(0px);
+}
+.loading-screen {
+  display: none;
+  background-color: black;
+}
+#searchInputs input {
+  display: none;
+}
+
+#searchInputs input::placeholder {
+  color: gray !important ;
+}

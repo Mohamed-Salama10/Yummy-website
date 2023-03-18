@@ -10,33 +10,46 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <div class="bg-black vh-100 position-relative" id="Home">
+    <div class="bg-black vh-100 position-relative overflow-auto" id="Home">
       <div
-        class="loading-screen position-absolute top-0 bottom-0 start-0 end-0 d-flex justify-content-center align-items-center d-none"
+        class="loading-screen position-absolute top-0 bottom-0 start-0 end-0 z-3"
         id="loading-screen"
       >
-        <i class="fa-solid fa-spinner fa-10x text-white fa-spin"></i>
-      </div>
-      <div class="navBarsDiv d-flex h-100 position-fixed ">
         <div
-          class="h-100 bg-danger main-nav-bar px-3 py-4 d-flex flex-column justify-content-between"
+          class="w-100 h-100 d-flex justify-content-center align-items-center"
         >
-          <div id="nav-content" class="bg-success overflow-hidden">
+          <i class="fa-solid fa-spinner fa-10x text-white fa-spin"></i>
+        </div>
+      </div>
+
+      <div class="navBarsDiv d-flex h-100 position-fixed">
+        <div
+          class="h-100 main-nav-bar px-3 py-4 d-flex flex-column justify-content-between"
+        >
+          <div id="nav-content" class="overflow-hidden">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link text-white" href="#" id="searchBtn">Search</a>
+                <a class="nav-link text-white" href="#" id="searchBtn"
+                  >Search</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="#" id="categoriesBtn">Categories</a>
+                <a class="nav-link text-white" href="#" id="categoriesBtn"
+                  >Categories</a
+                >
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white" href="#" id="areaBtn">Area</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="#" id="ingredientsBtn">Ingredients</a>
+                <a class="nav-link text-white" href="#" id="ingredientsBtn"
+                  >Ingredients</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="#" id="contactUsId">Contact Us</a>
+                <a class="nav-link text-white" href="#" id="contactUsId"
+                  >Contact Us</a
+                >
               </li>
             </ul>
           </div>
@@ -59,12 +72,57 @@
           </div>
         </div>
       </div>
+      <!--Search part divs-->
+      <div id="infoCards" class="" >
+        <div class="container" id="searchInputs">
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <div class="input-group mt-3">
+                <input
+                  id="searchByName"
+                  type="text"
+                  class="form-control bg-transparent text-white"
+                  placeholder="Search By Name"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+              <div class="input-group mt-3 text-white">
+                <input
+                  id="searchByFirstLetter"
+                  type="text"
+                  class="form-control bg-transparent text-white"
+                  placeholder="Search By First Name"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                  maxlength="1"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row" id="infoCardsRow"></div>
+        </div>
+      </div>
+      <!--Categories divs start-->
+      <div id="categories">
+        <div class="container">
+          <div class="row" id="categoriesCardsRow">
+            
+          </div>
+        </div>
+      </div>
     </div>
 
     <!--Linking files-->
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/jquery-3.6.4.js" type="module"></script>
     <script src="./js/search.js" type="module"></script>
+    <script src="./js/sharableFunctions.js" type="module"></script>
     <script src="./js/main.js" type="module"></script>
   </body>
 </html>
