@@ -158,6 +158,58 @@ export class search {
     this.applyDetailsEventListner(document.querySelectorAll(".singleInfoCard"));
   }
 
+  async displaySpecificIng(ing) {
+    function checkIng(meal, ingredientName) {
+      for (let index = 1; index <= 20; index++) {
+        let ing = eval(`meal.strIngredient${index}`);
+        if (ing != null) {
+          if (ing.includes(ingredientName)) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    $(".loading-screen").show();
+    hideAllWindows();
+    $("#infoCards").show();
+    const response = await fetch(
+      "https:" + "www.themealdb.com/api/json/v1/1/search.php?s="
+    );
+    let details = await response.json();
+    let container = "";
+    for (const meal of details.meals) {
+      if (checkIng(meal, ing) == true) {
+        container += `
+        <div class="col-lg-3 col-md-6 col-sm-12">
+              <div
+                class="mt-5 bg-white rounded-3 position-relative singleInfoCard overflow-hidden"
+                
+              >
+                <img
+                  src=${meal.strMealThumb}
+                  class="img-fluid"
+                  alt=""
+                />
+                <div
+                  class="infoOverlayLayer position-absolute top-0 start-0 end-0 bottom-0 rounded-3 d-flex align-items-center p-2 fs-2"
+                >
+                  <p class="" id="cardFoodName">${meal.strMeal}</p>
+                </div>
+              </div>
+            </div>
+        `;
+      }
+    }
+    let infoCardsRow = document.getElementById("infoCardsRow");
+    infoCardsRow.innerHTML = container;
+
+    this.applyDetailsEventListner(document.querySelectorAll(".singleInfoCard"));
+
+    $(".loading-screen").hide();
+  }
+
   applyDetailsEventListner(cards) {
     for (const card of cards) {
       card.addEventListener("click", function () {

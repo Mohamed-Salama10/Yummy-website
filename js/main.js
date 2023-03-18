@@ -2,9 +2,11 @@ import { search } from "./search.js";
 import { categories } from "./categories.js";
 import { hideAllWindows } from "./sharableFunctions.js";
 import { area } from "./area.js";
+import { ingredients } from "./ingredients.js";
 
 $(document).ready(function () {
   (function () {
+    $("#mealDetails").hide();
     $(".navBarsDiv").animate({ left: "-200px" }, 0);
     function btnMovement(btn) {
       let navContentHeight = $("#nav-content").innerHeight();
@@ -19,7 +21,7 @@ $(document).ready(function () {
 
   $("#toggle-icon").click(function () {
     let toggleIcon = $("#toggle-icon");
-    $(toggleIcon).toggleClass("fa-bars fa-x");
+    $("#toggle-icon").toggleClass("fa-bars fa-x");
     let navBarsDiv = $(".navBarsDiv");
     if (navBarsDiv.css("left") == "0px") {
       hideNavBar();
@@ -34,10 +36,11 @@ $(document).ready(function () {
   });
 
   function hideNavBar() {
-    let toggleIcon = $("#toggle-icon");
-    $(toggleIcon).toggleClass("fa-bars fa-x");
+    $("#toggle-icon").removeClass("fa-x");
+    $("#toggle-icon").addClass("fa-bars");
     let navBarsDiv = $(".navBarsDiv");
     navBarsDiv.animate({ left: "-200px" }, 500);
+    hideNavIcons();
   }
 
   function showNavIcons() {
@@ -109,9 +112,11 @@ $(document).ready(function () {
   let searchTab = new search();
 
   $("#searchBtn").click(function () {
+    hideAllWindows();
     searchTab.clearWindow();
     $("#searchByName").show();
     $("#searchByFirstLetter").show();
+    $("#infoCards").show();
     hideNavBar();
   });
 
@@ -120,8 +125,12 @@ $(document).ready(function () {
     searchTab.searchByName(searchName);
   });
   $("#searchByFirstLetter").keyup(function () {
-    let searchLetter = $("#searchByFirstLetter").val();
-    searchTab.searchByFirstLetter(searchLetter);
+    if ($("#searchByFirstLetter").val() === "") {
+      location.reload();
+    } else {
+      let searchLetter = $("#searchByFirstLetter").val();
+      searchTab.searchByFirstLetter(searchLetter);
+    }
   });
 
   ///start of categories implementation ///////////////
@@ -138,5 +147,11 @@ $(document).ready(function () {
     hideAllWindows();
     $("#areaDiv").show();
     new area(searchTab);
+  });
+  $("#ingredientsBtn").click(function () {
+    hideNavBar();
+    hideAllWindows();
+    $("#mealsByIngredients").show();
+    new ingredients(searchTab);
   });
 });
