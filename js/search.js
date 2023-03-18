@@ -120,6 +120,42 @@ export class search {
     }
     let infoCardsRow = document.getElementById("infoCardsRow");
     infoCardsRow.innerHTML = container;
+    this.applyDetailsEventListner(document.querySelectorAll(".singleInfoCard"));
+  }
+
+  async displaySpecificArea(area) {
+    $(".loading-screen").show();
+    $("#infoCards").show();
+    const response = await fetch(
+      "https:" + `www.themealdb.com/api/json/v1/1/filter.php?a=${area}`
+    );
+    let details = await response.json();
+    this.displayMeals(details);
+    $(".loading-screen").hide();
+    let container = ``;
+    for (const meal of details.meals) {
+      container += `
+        <div class="col-lg-3 col-md-6 col-sm-12">
+              <div
+                class="mt-5 bg-white rounded-3 position-relative singleInfoCard overflow-hidden"
+              >
+                <img
+                  src=${meal.strMealThumb}
+                  class="img-fluid"
+                  alt=""
+                />
+                <div
+                  class="infoOverlayLayer position-absolute top-0 start-0 end-0 bottom-0 rounded-3 d-flex align-items-center p-2 fs-2"
+                >
+                  <p class="" id="cardFoodName">${meal.strMeal}</p>
+                </div>
+              </div>
+            </div>
+        `;
+    }
+    let infoCardsRow = document.getElementById("infoCardsRow");
+    infoCardsRow.innerHTML = container;
+    this.applyDetailsEventListner(document.querySelectorAll(".singleInfoCard"));
   }
 
   applyDetailsEventListner(cards) {
@@ -135,17 +171,20 @@ export class search {
   //////////////////////////////end of class///////////////////////////
 }
 async function applyDetails(card) {
+  /*
   function getMealJson(mealArray, mealName) {
     let requiredMeal = undefined;
+    console.log(mealName);
     for (const meal of mealArray.meals) {
-      if (meal.strMeal == mealName) {
+      if (meal.strMeal === mealName) {
         requiredMeal = meal;
         return requiredMeal;
       }
     }
   }
-
+*/
   function assignMealDetails(meal) {
+    console.log();
     $("#detailMealImg").attr("src", `${meal.strMealThumb}`);
     $("#detailsMealName").html(`${meal.strMeal}`);
     $("#detailsMealArea").html(
@@ -171,7 +210,6 @@ async function applyDetails(card) {
 
     for (let index = 1; index <= 20; index++) {
       let ing = eval(`meal.strIngredient${index}`);
-      console.log(typeof ing);
       if (ing !== "" && ing !== null) {
         $("#detailsMealRecipe").append(
           `<li class="alert alert-info m-2 p-1">${ing}</li>`
@@ -179,17 +217,17 @@ async function applyDetails(card) {
       }
     }
   }
-
   $(".loading-screen").show();
   let food = card.querySelector("#cardFoodName").innerHTML;
+
   $("#mealDetails").show();
 
   const response = await fetch(
-    "https:" + "www.themealdb.com/api/json/v1/1/search.php?s="
+    "https:" + `www.themealdb.com/api/json/v1/1/search.php?s=${food}`
   );
   let details = await response.json();
-  let requiredMeal = getMealJson(details, food);
-  assignMealDetails(requiredMeal);
+
+  assignMealDetails(details.meals[0]);
 
   $(".loading-screen").hide();
 }

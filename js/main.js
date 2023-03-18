@@ -1,6 +1,7 @@
 import { search } from "./search.js";
 import { categories } from "./categories.js";
 import { hideAllWindows } from "./sharableFunctions.js";
+import { area } from "./area.js";
 
 $(document).ready(function () {
   (function () {
@@ -130,5 +131,12 @@ $(document).ready(function () {
     hideAllWindows();
     $("#categories").show();
     new categories(searchTab);
+  });
+
+  $("#areaBtn").click(function () {
+    hideNavBar();
+    hideAllWindows();
+    $("#areaDiv").show();
+    new area(searchTab);
   });
 });

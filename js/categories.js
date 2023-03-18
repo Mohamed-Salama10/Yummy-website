@@ -58,7 +58,6 @@ export class categories {
       div.addEventListener("click", function () {
         hideAllWindows();
         let clickedCat = this.querySelector("#catParagraph").innerHTML;
-        console.log(clickedCat);
         searchRef.displaySpecificCat(clickedCat);
       });
     }

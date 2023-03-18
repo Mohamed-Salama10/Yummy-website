@@ -5,6 +5,7 @@ export function hideAllWindows() {
     $("#mealDetails").hide();
     $("#searchByName").hide();
     $("#searchByFirstLetter").hide();
+    $("#areaDiv").hide();
 
 
 
