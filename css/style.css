@@ -37,3 +37,8 @@
 #searchInputs input::placeholder {
   color: gray !important ;
 }
+
+#detailsMealTag{
+  display: inline;
+}
+

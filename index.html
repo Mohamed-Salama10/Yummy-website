@@ -12,7 +12,7 @@
   <body>
     <div class="bg-black vh-100 position-relative overflow-auto" id="Home">
       <div
-        class="loading-screen position-absolute top-0 bottom-0 start-0 end-0 z-3"
+        class="loading-screen position-absolute top-0 bottom-0 start-0 end-0 z-3 "
         id="loading-screen"
       >
         <div
@@ -73,7 +73,7 @@
         </div>
       </div>
       <!--Search part divs-->
-      <div id="infoCards" class="" >
+      <div id="infoCards" class="">
         <div class="container" id="searchInputs">
           <div class="row">
             <div class="col-md-6 col-sm-12">
@@ -111,8 +111,72 @@
       <!--Categories divs start-->
       <div id="categories">
         <div class="container">
-          <div class="row" id="categoriesCardsRow">
-            
+          <div class="row" id="categoriesCardsRow"></div>
+        </div>
+      </div>
+      <!--specfic meal details div-->
+
+      <div id="mealDetails">
+        <div class="container py-5">
+          <div class="row">
+            <div class="col-lg-4 col-sm-12">
+              <div>
+                <img
+                  src=""
+                  alt=""
+                  class="img-fluid rounded-3"
+                  id="detailMealImg"
+                />
+                <h6 class="fs-2 text-white" id="detailsMealName"></h6>
+              </div>
+            </div>
+            <div class="col-lg-8 col-sm-12">
+              <div>
+                <h2 class="text-white fs-2">Instructions</h2>
+                <p class="text-white fs-6" id="detailsMealInstructions"></p>
+                <h2 class="text-white fs-2" id="detailsMealArea">
+                  <span class="fw-bold">Area </span>: Turkish
+                </h2>
+                <h2 class="text-white fs-2" id="detailsMealCategory">
+                  <span class="fw-bold">Category </span>: Side
+                </h2>
+                <h2 class="text-white fs-2">Recipes :</h2>
+
+                <ul class="list-unstyled d-flex g-3 flex-wrap" id="detailsMealRecipe">
+                  <li class="alert alert-info m-2 p-1">1 cup Lentils</li>
+                </ul>
+
+                <h2 class="text-white fs-2 mb-4">Tags :</h2>
+                <div id="detailsMealTagsDiv"></div>
+
+                <div class="mt-4">
+                  <span>
+                    <a
+                      href="https://getbootstrap.com/"
+                      target="_blank"
+                      class="text-decoration-none"
+                      id="detailsMealSourceBtn"
+                    >
+                      <button type="button" class="btn btn-success">
+                        Source
+                      </button>
+                    </a>
+                  </span>
+                  <span class="ms">
+                    <a
+                      href="https://getbootstrap.com/"
+                      target="_blank"
+                      class="text-decoration-none"
+                      id="detailsMealYoutubeBtn"
+                    >
+                      <button type="button" class="btn btn-danger">
+                        youtube
+                      </button>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
