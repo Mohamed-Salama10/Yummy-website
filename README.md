@@ -14,4 +14,3 @@ This project is more than a recipe repository; it's a testament to my learning j
 
 Embark on a culinary and coding adventure with **Yummy Website**!
 
-[Explore the website](#) (replace # with your website link when available)
